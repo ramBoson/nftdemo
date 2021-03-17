@@ -8,6 +8,8 @@ import { Router, Route, Switch } from "react-router-dom";
 
 import Nft from "./Nft";
 import Sendpage from "./Sendpage";
+import Newpage from "./Newpage";
+import Tokencreate from "./Tokencreate";
 
 
 
@@ -46,6 +48,10 @@ function Printallimage() {
   const [imgurl,setimgurl] = useState([]);
 
 
+  
+
+  
+
   const names = [];
   const namesc = [];
 
@@ -60,6 +66,13 @@ function Printallimage() {
   
     
       //new write below
+
+      //const componentDidMount = () =>(event){
+        
+        // your source code to load initial data
+
+        
+   // }
 
 
       const onSubmitNFT = async (event) => {
@@ -1094,7 +1107,7 @@ function Printallimage() {
 
     
 
-    for(var i=653;i<=657;i++){
+    for(var i=600;i<=700;i++){
 
      
       var printgeta=await getaaa.methods.tokenURI(654).call();
@@ -1113,12 +1126,29 @@ function Printallimage() {
 
       }
       else{
+
+        
+
         names.push(await getaaa.methods.tokenURI(i).call());
 
         setimgurl(await getaaa.methods.tokenURI(i).call());
 
       }
 
+
+
+    
+
+
+      //for(var i=0;i<=names.length;i++){
+
+        //var a=document.createElement("img")
+
+        //a.src=names[i]
+
+       // document.getElementById("prag").append(a)
+
+     // }
       
 
 
@@ -1131,14 +1161,22 @@ function Printallimage() {
 
     }
 
-
-    
     
 
     alert(names.length);
 
 
     for(var i=0;i<names.length;i++){
+
+
+        var a=document.createElement("img")
+
+        a.src=names[i]
+        a.width=400
+        a.height=400
+
+        document.getElementById("prag").append(a)
+
 
       //setgetaprint(names[i]);
 
@@ -1182,6 +1220,26 @@ function Printallimage() {
                 Go Transfer page
               </button>
 
+              <button
+                class="btn btn-info btn-block"
+                type="button"
+                onClick={() => {
+                  history.push("/tokencreate");
+                }}>
+                Tokencreate Page 
+              </button>
+              <button
+                class="btn btn-info btn-block"
+                type="button"
+                onClick={() => {
+                  history.push("/newpage");
+                }}
+              >
+                Get Single Image Page
+              </button>
+
+
+
 
               <br></br>
 <br></br>
@@ -1212,33 +1270,6 @@ function Printallimage() {
 
 
 </center>
-
-<img 
-      src={printgeta}
-      alt="new"
-      width="400" height="400"
-      />
-
-<img 
-      src={printgeta2}
-      alt="new"
-      width="400" height="400"
-      />
-
-<img 
-      src={printgeta3}
-      alt="new"
-      width="400" height="400"
-      />
-
-
-
-
-  <img 
-  src={printgeta}
-  alt="new"
-  width="400" height="400"
-  />
 
 
 
@@ -1285,6 +1316,12 @@ function Printallimage() {
             <Route path="/sendpage">
               <Sendpage />
             </Route>
+            <Route path="/tokencreate">
+              <Tokencreate />
+            </Route>
+            <Route path="/newpage">
+              <Newpage />
+            </Route>
           </Switch>
         </Router>
 
@@ -1294,15 +1331,13 @@ function Printallimage() {
         </div>
 
 
-        <div>
-  <ul>
-{imgurl.map(imgurl =>(
-  <img src={imgurl.values} alt="new" width="100" height="100"/>
-))}
+        <div id="prag">
 
 
-  </ul>
-  </div>
+
+</div>
+
+        
 
 	  
       </div>      

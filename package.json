@@ -2,6 +2,7 @@
   "name": "combinetwopage",
   "version": "0.1.0",
   "private": true,
+  "node": "6.11.1",
   "dependencies": {
 
 
